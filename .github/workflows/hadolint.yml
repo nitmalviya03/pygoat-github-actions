@@ -19,6 +19,8 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+  attestations: write
 
 jobs:
   hadolint:
@@ -39,3 +41,6 @@ jobs:
         with:
           dockerfile: ./Dockerfile
 
+      - uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: build.provenance
